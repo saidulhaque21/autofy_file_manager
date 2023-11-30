@@ -1,0 +1,35 @@
+HTML:
+<div class="col-xs-12 col-sm-12 col-lg-6">
+    <div class="form-group ">
+        <label class="col-md-12 label-control" for="name">Image:</label>
+        <div class="col-md-11">  
+            <img v-if="website_widget_item.image"  class="img-fluid p-1"  :src="base+website_widget_item.image" style="max-width: 250px;" />
+            <input  type="hidden" name="image" v-model="website_widget_item.image" id="image"/>
+            <button type="button" class="btn btn-secondary btn-sm" @click="vueSFM">Add Category Featured Image</button> 
+        </div>
+    </div>
+</div> 
+
+VUE JS: 
+file_path:"", 
+vueSFM: function () {
+        this.processMessage = "Opening Modal";
+        var options = {
+            base_url: base_url,
+            title: "File Manager ",
+            file_type: "image", // image | document (doc, pdf) | video | *
+            afterFileSelect: function (paramas) {
+                crudConfigs.file_path = paramas.file_path.replace(crudConfigs.base, "");
+                crudConfigs.bs_item_category.image = crudConfigs.file_path; // change this line according to model 
+
+            }
+        };
+        smartFileManager(options);
+        this.processMessage = "Opened Modal";
+    },
+
+
+Upload DIrectory: 
+
+var root_directory = "<?php echo $this->sid_drive; ?>";
+var upload_directory = "<?php echo "item_category"; ?>";

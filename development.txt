@@ -1,0 +1,8 @@
+
+we need to call using
+1. jQuery
+2. Vuejs
+3. Angular
+4. React
+
+
