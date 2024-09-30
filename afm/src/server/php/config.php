@@ -5,7 +5,7 @@
  * ---------------------------------------------------------------
  * @application        Smart File Manager(SMF)
  * @Version            smf v 1.0 ()
- * @download link      https://github.com/pclanguage/smart_file_manager
+ * @download link      https://github.com/pclanguage/autofy_file_manager
  * @help link          
  * ---------------------------------------------------------------
  * @author             Md. saidul haque
@@ -31,12 +31,12 @@ $GLOBALS['exclude_items'] = array('index.php');
 // max upload file size
 define('MAX_UPLOAD_SIZE', '2048');
 define('FILE_NAME_PREFIX', '');
-define('SFM_DEBUG', false);
+define('afm_DEBUG', false);
 
-$sfm_image_extension = array('gif', 'png', 'jpeg', 'jpg', 'JPEG', 'JPG', 'PNG', 'GIF', "webp");
-$sfm_document_extension = array('doc', 'docx', 'pdf', 'xls', 'ppt', 'pptx', "xml");
-$sfm_video_extension = array('mp3', 'mp4', 'flv');
-$allowed_extensions = json_encode(array_merge(array_merge($sfm_image_extension, $sfm_document_extension), $sfm_video_extension));
+$afm_image_extension = array('gif', 'png', 'jpeg', 'jpg', 'JPEG', 'JPG', 'PNG', 'GIF', "webp");
+$afm_document_extension = array('doc', 'docx', 'pdf', 'xls', 'ppt', 'pptx', "xml");
+$afm_video_extension = array('mp3', 'mp4', 'flv');
+$allowed_extensions = json_encode(array_merge(array_merge($afm_image_extension, $afm_document_extension), $afm_video_extension));
 
 defined('FM_SHOW_HIDDEN') || define('FM_SHOW_HIDDEN', true);
 //defined('FM_ROOT_PATH') || define('FM_ROOT_PATH', $root_path);
@@ -62,45 +62,45 @@ include_once 'lib/fm.php';
 
 // Base URL (keeps this crazy sh*t out of the config.php
 if (isset($_SERVER['HTTP_HOST'])) {
-    $sfm_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on' ? 'https' : 'http';
-    $sfm_base_url .= '://' . $_SERVER['HTTP_HOST'];
-    $sfm_base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+    $afm_base_url = isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on' ? 'https' : 'http';
+    $afm_base_url .= '://' . $_SERVER['HTTP_HOST'];
+    $afm_base_url .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 
     // Base URI (It's different to base URL!)
-    $sfm_base_uri = parse_url($sfm_base_url, PHP_URL_PATH);
-    if (substr($sfm_base_uri, 0, 1) != '/')
-        $sfm_base_uri = '/' . $sfm_base_uri;
-    if (substr($sfm_base_uri, -1, 1) != '/')
-        $sfm_base_uri .= '/';
+    $afm_base_uri = parse_url($afm_base_url, PHP_URL_PATH);
+    if (substr($afm_base_uri, 0, 1) != '/')
+        $afm_base_uri = '/' . $afm_base_uri;
+    if (substr($afm_base_uri, -1, 1) != '/')
+        $afm_base_uri .= '/';
 } else {
-    $sfm_base_url = 'http://localhost/';
-    $sfm_base_uri = '/';
+    $afm_base_url = 'http://localhost/';
+    $afm_base_uri = '/';
 }
-$sfm_base_url = str_replace("sfm/src/server/php/actions/", "", $sfm_base_url);
-$sfm_base_uri = trim(str_replace("sfm/src/server/php/actions/", "", $sfm_base_uri), "/") . "/";
-$sfm_server_root = $_SERVER["DOCUMENT_ROOT"] . '/';
+$afm_base_url = str_replace("afm/src/server/php/actions/", "", $afm_base_url);
+$afm_base_uri = trim(str_replace("afm/src/server/php/actions/", "", $afm_base_uri), "/") . "/";
+$afm_server_root = $_SERVER["DOCUMENT_ROOT"] . '/';
 
-$sfm_base_uri = $sfm_base_uri == DS ? "" : $sfm_base_uri;
+$afm_base_uri = $afm_base_uri == DS ? "" : $afm_base_uri;
 
 $c_dir = isset($_REQUEST['c_dir']) ? $_REQUEST['c_dir'] : "";
 $c_dir = str_replace("dashboard", "", $c_dir);
 $current_directory = trim($c_dir, "//") . "/";
 
 if (OS_WIN) {
-    $sfm_server_root = str_replace("//", "/", $sfm_server_root);
+    $afm_server_root = str_replace("//", "/", $afm_server_root);
 } else {
-    $sfm_server_root = "/" . $sfm_server_root;
+    $afm_server_root = "/" . $afm_server_root;
 }
-$sfm_server_root = str_replace("//", "/", $sfm_server_root);
+$afm_server_root = str_replace("//", "/", $afm_server_root);
 
-$current_base_url = trim($sfm_base_url . "/" . $c_dir, "//") . "/";
+$current_base_url = trim($afm_base_url . "/" . $c_dir, "//") . "/";
 $current_base_url = str_replace("//", "/", $current_base_url);
 $current_base_url = str_replace(":/", "://", $current_base_url);
 
-define('SFM_SERVER_ROOT', $sfm_server_root); // searver root
-define('SFM_BASE_URI', $sfm_base_uri); // after searver root, project name
-define('SFM_CURRENT_DIRECTORY', $current_directory); // project name name, next folder dir
-define('SFM_DIRECTORY_PATH', SFM_SERVER_ROOT . SFM_BASE_URI . $current_directory); //final dir path 
+define('afm_SERVER_ROOT', $afm_server_root); // searver root
+define('afm_BASE_URI', $afm_base_uri); // after searver root, project name
+define('afm_CURRENT_DIRECTORY', $current_directory); // project name name, next folder dir
+define('afm_DIRECTORY_PATH', afm_SERVER_ROOT . afm_BASE_URI . $current_directory); //final dir path 
 
 if (IS_DATABASE_INCLUDED) {
     include_once 'db/MysqliDb.php';
@@ -109,10 +109,10 @@ if (IS_DATABASE_INCLUDED) {
 
 
 
-if (SFM_DEBUG) {
-    echo '$sfm_base_url=' . $sfm_base_url . '<br/>';
-    echo '$sfm_base_uri=' . $sfm_base_uri . '<br/>';
-    echo '$sfm_server_root=' . $sfm_server_root . '<br/>';
+if (afm_DEBUG) {
+    echo '$afm_base_url=' . $afm_base_url . '<br/>';
+    echo '$afm_base_uri=' . $afm_base_uri . '<br/>';
+    echo '$afm_server_root=' . $afm_server_root . '<br/>';
     echo '$current_directory=' . $current_directory . '<br/>';
     echo '$current_base_url=' . $current_base_url . '<br/>';
 }

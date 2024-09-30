@@ -207,7 +207,7 @@ function X_fm_mkdir($dir, $force) {
 function fm_mkdir($path) {
     $location_array = explode('/', $path);
 //    print_r($location_array);
-    $first = SFM_SERVER_ROOT . SFM_BASE_URI;
+    $first = afm_SERVER_ROOT . afm_BASE_URI;
 //      echo  $first.'<br/>'; exit;
     foreach ($location_array as $location_val) {
         if ($location_val != '') {

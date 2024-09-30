@@ -17,7 +17,7 @@ if (!empty($_FILES)) {
 //print_r($_FILES);
     foreach ($_FILES as $key => $value) {
         if (!empty($value["name"]) && $value["tmp_name"]) {
-            $file_info = upload_file($value, SFM_DIRECTORY_PATH, $allowed_extensions, $sfm_document_extension);
+            $file_info = upload_file($value, afm_DIRECTORY_PATH, $allowed_extensions, $afm_document_extension);
 //print_r($file_info); exit; 
 
             if (IS_DATABASE_INCLUDED) {
@@ -29,7 +29,7 @@ if (!empty($_FILES)) {
                     "title" => str_replace("." . $file_info->extension, "", $file_info->name),
                     "caption" => $file_caption,
                     "description" => $file_description,
-                    "file_path" => str_replace(SFM_SERVER_ROOT . SFM_BASE_URI, "", $file_info->path),
+                    "file_path" => str_replace(afm_SERVER_ROOT . afm_BASE_URI, "", $file_info->path),
                     'user_id' => 1,
                     'created' => date("Y-m-d H:i:s"),
                     'updated' => date("Y-m-d H:i:s"),
@@ -44,8 +44,8 @@ if (!empty($_FILES)) {
 }
 echo json_encode($response);
 
-function upload_file($file, $output_dir, $ua_image_extension = [], $sfm_document_extension = []) {
-//    echo  $output_dir.' - root: '.SFM_SERVER_ROOT; exit;
+function upload_file($file, $output_dir, $ua_image_extension = [], $afm_document_extension = []) {
+//    echo  $output_dir.' - root: '.afm_SERVER_ROOT; exit;
 //    exit;
 
     $temp_name = $file["tmp_name"];
@@ -66,7 +66,7 @@ function upload_file($file, $output_dir, $ua_image_extension = [], $sfm_document
 // upload in temp folder 
 //    move_uploaded_file($temp_name, $output_dir . $file_new_name);
 
-    if (in_array($extension, $sfm_document_extension)) {
+    if (in_array($extension, $afm_document_extension)) {
      
          $details['path'] = $output_dir . $filename; 
     } else {

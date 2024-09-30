@@ -1,6 +1,6 @@
  
-var sfm_model_vue = new Vue({
-    el: '#sfm_model_vue',
+var afm_model_vue = new Vue({
+    el: '#afm_model_vue',
     data: {
 // messge and show hide 
         selectedItems: [],

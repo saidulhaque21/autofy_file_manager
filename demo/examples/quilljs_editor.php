@@ -4,7 +4,7 @@
 <!-- Create the editor container -->
 
     <script>
-        var base_url = "http://localhost/smart_file_manager/";
+        var base_url = "http://localhost/afm/";
         var root_directory = "uploads/";
     </script>
 <div id="toolbar"> 
@@ -41,10 +41,10 @@
         theme: 'snow'
     };
     var quill = new Quill('#editor', options);
-//        var customButton = document.querySelector('.ql-sfm');
+//        var customButton = document.querySelector('.ql-afm');
 //        customButton.addEventListener('click', function () {
 //            var options = {
-//                base_url: "http://localhost/smart_file_manager/",
+//                base_url: "http://localhost/afm/",
 //                title: "File Manager ",
 //                file_type: "image", // image | document (doc, pdf) | video | *
 //                afterFileSelect: afterFileSelect
@@ -56,7 +56,7 @@
 
     function customImageHandler() {
         var options = {
-            base_url: "http://localhost/smart_file_manager/",
+            base_url: "http://localhost/afm/",
             title: "File Manager ",
             file_type: "image", // image | document (doc, pdf) | video | *
             afterFileSelect: afterFileSelect

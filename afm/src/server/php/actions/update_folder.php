@@ -11,9 +11,9 @@ if (!$folder_name) {
     $response["errors"] = "file name is requred";
 } else {
     $new_name = generate_alias($folder_name);
-    $new = str_replace($previous_name, $new_name, SFM_DIRECTORY_PATH);
+    $new = str_replace($previous_name, $new_name, afm_DIRECTORY_PATH);
     try {
-        fm_rename(SFM_DIRECTORY_PATH, $new);
+        fm_rename(afm_DIRECTORY_PATH, $new);
 
         $folder_info['name'] = $new_name;
         $folder_info['size'] = "Folder";

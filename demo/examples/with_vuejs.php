@@ -1,11 +1,11 @@
  
-<div id="sfm_model_vue" >
+<div id="afm_model_vue" >
     <h2>Example</h2>
     <script>
-        var base_url = "http://localhost/smart_file_manager/";
+        var base_url = "http://localhost/afm/";
         var root_directory = "uploads/";
     </script>
-    <button @click="vueSFM">Upload Image</button>
+    <button @click="vueafm">Upload Image</button>
     <p>
         <img width="200" v-for="src in selectedItems" :src="src" />
     </p>

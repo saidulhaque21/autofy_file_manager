@@ -14,8 +14,8 @@ $page = $page ? $page : 1;
 $extension = isset($_REQUEST['extension']) && $_REQUEST['extension'] ? $_REQUEST['extension'] : '';
 $extension = ($extension == '*' || $extension == 'All') ? "" : $extension;
 $keyword = isset($_REQUEST['keyword']) && $_REQUEST['keyword'] ? $_REQUEST['keyword'] : '';
-// echo SFM_DIRECTORY_PATH; 
-$file_folders = get_file_folders(SFM_DIRECTORY_PATH);
+// echo afm_DIRECTORY_PATH; 
+$file_folders = get_file_folders(afm_DIRECTORY_PATH);
 //print_r($file_folders);  exit; 
 $files = $file_folders['files'];
 $folders = $file_folders['folders'];
@@ -29,11 +29,11 @@ if ($total_folders) {
         $folder_info['size'] = "Folder";
         $folder_info['type'] = "folder";
         $folder_info['label'] = $folder;
-        $is_link = is_link(SFM_DIRECTORY_PATH . $folder);
+        $is_link = is_link(afm_DIRECTORY_PATH . $folder);
         $folder_info['icon'] = $is_link ? 'icon-link_folder' : 'fa-folder-o';
 
 
-        $folder_info['modified'] = date(FM_DATETIME_FORMAT, filemtime(SFM_DIRECTORY_PATH . $folder));
+        $folder_info['modified'] = date(FM_DATETIME_FORMAT, filemtime(afm_DIRECTORY_PATH . $folder));
         $items[] = $folder_info;
     }
 }
@@ -42,7 +42,7 @@ if ($total_folders) {
 $temp_files = [];
 if ($total_files) {
     foreach ($files as $file) {
-        $file_path = SFM_DIRECTORY_PATH . $file;
+        $file_path = afm_DIRECTORY_PATH . $file;
         $file_info = pathinfo($file_path);
         $file_info['name'] =$filename= $file_info['basename'];
         unset($file_info['dirname']);

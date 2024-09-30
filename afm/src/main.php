@@ -1,8 +1,8 @@
  
 
-<div class="section p-0 m-0" id="sfm_app"  >
+<div class="section p-0 m-0" id="afm_app"  >
 
-    <div class="sfm_header px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <div class="afm_header px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
         <h2 class="h2">Smart File Manager </h2>
 
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -40,10 +40,10 @@
                 </div>
             </div>
 
-            <div class="pl-5 pr-2"> <span class="close" onclick="sfmClose();">&times;</span></div> 
+            <div class="pl-5 pr-2"> <span class="close" onclick="afmClose();">&times;</span></div> 
         </div>
     </div>
-    <div class="sfm_breadcrumb px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
+    <div class="afm_breadcrumb px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
         <div class="">
             <!--{{browsing_dir_array}}-->
             <a v-for="( dir, key) in browsing_dir_array" @click="library(dir)" :class="browsing_dir_array.length===(key+1)?'last':'prev'" href="javascript:void(0);" >{{dir.label}}/</a> 
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    <div class="sfm_app_body row p-4    ">
+    <div class="afm_app_body row p-4    ">
         <div class="col-12 pb-4"> 
             <div v-if="errorMessage"  v-html="errorMessage"  class="alert alert-danger m-1"></div>
             <div v-if="successMessage"  v-html="successMessage"  class="alert alert-success m-1"></div> 
@@ -125,7 +125,7 @@
 
 
         <!--<div v-if="current_action=='library'" class="col pt-3" style="max-height: 400px; overflow: auto; "  >-->
-        <div v-if="current_action=='library'" class="col pt-3 sfm_item_contaimer"   >
+        <div v-if="current_action=='library'" class="col pt-3 afm_item_contaimer"   >
             <div  v-if="view_type=='Grid'" class="row grid_view"  >
 
 
@@ -135,13 +135,13 @@
 <!--                            <a href="assets/img/gallery/full/full-11.jpg" data-caption="<div class='text-center'>Place your caption here.<br><em class='text-muted'><i class='zmdi zmdi-favorite'></i> Material Wrap</em></div>" data-width="1600" data-height="1068" itemprop="contentUrl">
                                 <img src="http://materialwrap-html.authenticgoods.co/assets/img/gallery/full/full-11.jpg" itemprop="thumbnail" alt="Image description">
                             </a>-->
-                            <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-responsive" :src="sfm_base_url+up_dir+browsing_dir+item.name" :alt="item.name">
+                            <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-responsive" :src="afm_base_url+up_dir+browsing_dir+item.name" :alt="item.name">
                             <i  v-else-if="item.type=='folder'" :class="'fa '+item.icon"></i>
                             <i  v-else="item.icon!='fa-picture-o'" :class="'iconic fa '+item.icon"></i>
 
                         </div>
                         <div class="card-body p-1">
-                            <p class="sfm_file_name text-center">{{item.label}}</p>
+                            <p class="afm_file_name text-center">{{item.label}}</p>
                             <!--<p class="text-center">{{item.type}}</p>-->
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                         <td>   
 
                             <a @click="library(item);" href="javascript:void(0);">
-                                <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-responsive" :src="sfm_base_url+up_dir+browsing_dir+item.name" :alt="item.name" style="width:30px;">
+                                <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-responsive" :src="afm_base_url+up_dir+browsing_dir+item.name" :alt="item.name" style="width:30px;">
                                 <i v-else  :class="'fa '+item.icon"></i>
 
                                 {{item.name}} 
@@ -178,7 +178,7 @@
                             <a title="Delete" href="javaScript:void(0);" @click="deleteItem(item)"><i class="fa fa-trash-o"></i></a>
                             <a title="Rename" href="javaScript:void(0)" @click="renameItem(item)" ><i class="fa fa-pencil-square-o"></i></a>
                             <a title="Copy to..." href="javaScript:void(0)"  @click="copyItem(item)"><i class="fa fa-files-o"></i></a>
-                            <a v-if="item.type=='file'" title="Direct link" :href="sfm_base_url+up_dir+browsing_dir+item.name" target="_blank"><i class="fa fa-link"></i></a>
+                            <a v-if="item.type=='file'" title="Direct link" :href="afm_base_url+up_dir+browsing_dir+item.name" target="_blank"><i class="fa fa-link"></i></a>
                             <a v-if="item.type=='file'" title="Download" href="javaScript:void(0)" @click="downloadItem(item)"><i class="fa fa-download"></i></a>
                         </td>
                     </tr>
@@ -202,7 +202,7 @@
                     <div class=" py-2">
                         <a class="btn btn-success btn-sm  text-right" title="Select" href="javaScript:void(0)" @click="selectItem(item)"><i class="fa fa-tick"></i> Select</a>
                     </div>
-                    <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-thumbnail" :src="sfm_base_url+up_dir+browsing_dir+item.name" :alt="item.name">
+                    <img v-if="item.icon=='fa-picture-o'" class="card-img-top img-fluid img-thumbnail" :src="afm_base_url+up_dir+browsing_dir+item.name" :alt="item.name">
                     <i  v-if="item.icon!='fa-picture-o'" :class="'iconic fa '+item.icon"></i>
                 </div>
                 <div class="card-body  p-1">
@@ -223,7 +223,7 @@
                     </li>
 
                     <li class="list-group-item  p-0"> 
-                        <strong><i class="fa fa-link"></i> Direct link:</strong>     <a class="card-link" v-if="item.type=='file'" title="Direct link" :href="sfm_base_url+up_dir+browsing_dir+item.name" target="_blank">{{sfm_base_url+up_dir+browsing_dir+item.name}} </a>
+                        <strong><i class="fa fa-link"></i> Direct link:</strong>     <a class="card-link" v-if="item.type=='file'" title="Direct link" :href="afm_base_url+up_dir+browsing_dir+item.name" target="_blank">{{afm_base_url+up_dir+browsing_dir+item.name}} </a>
                     </li>
 
                 </ul>
@@ -282,7 +282,7 @@
                             </div>
                         </vue-dropzone>
 
-                        <div v-if="uploadedTotalFiles" class="sfm_breadcrumb px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
+                        <div v-if="uploadedTotalFiles" class="afm_breadcrumb px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
                             <div class="">
                                 <button id="remove_all_dropzone_files" class="btn btn-danger pull-left ua-remove-all"  >Remove  All</button>
                             </div>
@@ -307,7 +307,7 @@
 
     </div>
 
-    <div class="sfm_footer px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
+    <div class="afm_footer px-2 py-2 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  border-bottom">
         <div class="">
             Path:   {{up_dir}}{{browsing_dir}}
         </div>
@@ -316,7 +316,7 @@
 
         </div>
     </div>
-    <div v-if="sfm_debug" class="col-md-12 bg-dark text-white">
+    <div v-if="afm_debug" class="col-md-12 bg-dark text-white">
         <h2>Debug: </h2>
         <p>  Path:   {{up_dir}}{{browsing_dir}}</p>
         <p>  browsing_dir:   {{browsing_dir}} </p>
@@ -338,7 +338,7 @@
 
 
 
-<!--<script type="text/javascript" src="src/js/sfm_fm.js"></script>-->
+<!--<script type="text/javascript" src="src/js/afm_fm.js"></script>-->
 <style>
     .grid_view .fa{
         font-size: 100px;

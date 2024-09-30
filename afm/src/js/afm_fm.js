@@ -1,9 +1,9 @@
 
 
 var given_base_url = typeof base_url !== 'undefined' ? base_url : "";
-var sfm_upload_directory = typeof upload_directory !== 'undefined' ? upload_directory : "";
-var sfm_root_directory = typeof root_directory !== 'undefined' ? root_directory : "uploads/";
-var sfm_debug = typeof debug !== 'undefined' ? debug : false;
+var afm_upload_directory = typeof upload_directory !== 'undefined' ? upload_directory : "";
+var afm_root_directory = typeof root_directory !== 'undefined' ? root_directory : "uploads/";
+var afm_debug = typeof debug !== 'undefined' ? debug : false;
 var select_action = typeof select_action !== 'undefined' ? select_action : "";
 
 var type_list = {"image": "Image", "document": "Document", "video": "Video"};
@@ -11,25 +11,25 @@ var MAX_UPLOAD_SIZE = "2048";
 
 
 //var directory_path="";
-var api_url = given_base_url + "sfm/src/server/php/actions/";
+var api_url = given_base_url + "afm/src/server/php/actions/";
 
 
 Vue.use(vue2Dropzone);
-var sfm_app = new Vue({
-    el: '#sfm_app',
+var afm_app = new Vue({
+    el: '#afm_app',
     data: {
         // path 
         //  sr: server_root, //server root for uploading file  | fixed 
-        sfm_base_url: given_base_url, // sfm_base_url for browsing file  | fixed 
-        up_dir: sfm_root_directory, // initial upload directory | fixed 
-        browsing_dir: sfm_upload_directory, // upload directory is tags which will add with  server_root or sfm_base_url and changeable 
+        afm_base_url: given_base_url, // afm_base_url for browsing file  | fixed 
+        up_dir: afm_root_directory, // initial upload directory | fixed 
+        browsing_dir: afm_upload_directory, // upload directory is tags which will add with  server_root or afm_base_url and changeable 
 
-        sfm_api_url: api_url, // file access API URL  | fixed 
+        afm_api_url: api_url, // file access API URL  | fixed 
 
 // messge and show hide 
         errorMessage: "",
         successMessage: "",
-        sfm_debug: sfm_debug,
+        afm_debug: afm_debug,
         is_new_folder: false,
         is_rename_folder: false,
         is_preview: false,
@@ -59,7 +59,7 @@ var sfm_app = new Vue({
         uploadedTotalFiles: 0,
         // dropzoneOptions 
         dropzoneOptions: {
-            // url: this.sfm_api_url + "upload.php",
+            // url: this.afm_api_url + "upload.php",
             // params: this.query_string,
             thumbnailWidth: 150,
             addRemoveLinks: true,
@@ -73,11 +73,11 @@ var sfm_app = new Vue({
                 });
                 this.on("removedfile", function (file) {
                     totalFiles -= 1;
-                    sfm_app.updateUploadCounter(totalFiles);
+                    afm_app.updateUploadCounter(totalFiles);
                 });
                 this.on("complete", function (file) {
                     //console.log(totalFiles);
-                    sfm_app.updateUploadCounter(totalFiles);
+                    afm_app.updateUploadCounter(totalFiles);
                 });
                 this.on("queuecomplete", function (file) {
 
@@ -112,7 +112,7 @@ var sfm_app = new Vue({
         let sss = this.root_browsing_dir;
         this.browsing_dir_array = [{label: "DASHBOARD", name: "dashboard", "type": "folder"}];
 //         console.log(this.root_browsing_dir);
-        this.dropzoneOptions.url = this.sfm_api_url + "upload.php";
+        this.dropzoneOptions.url = this.afm_api_url + "upload.php";
         this.initBrowsingDir();
         this.fetchObjects();
     },
@@ -174,7 +174,7 @@ var sfm_app = new Vue({
             this.set_query_string();
             this.query_string.rid = Math.random().toString(36).substr(2, 9);
             let qs = this.makeSerialize(this.query_string);
-            let action_url = this.sfm_api_url + 'get.php?' + qs;
+            let action_url = this.afm_api_url + 'get.php?' + qs;
             axios.get(action_url).then(res => {
                 if (res.data.status === 200) {
                     this.items = res.data.items;
@@ -244,7 +244,7 @@ var sfm_app = new Vue({
             }
         },
         fetchObject: function (item_id) {
-            axios.get(this.sfm_api_url + "get/" + item_id).then(res => {
+            axios.get(this.afm_api_url + "get/" + item_id).then(res => {
                 if (res.status === 200) {
                     this.item = res.data.item;
                 }
@@ -261,7 +261,7 @@ var sfm_app = new Vue({
         saveFolder: function () {
             this.reset_message();
             // let qs = this.makeSerialize(this.query_string);
-            let action_url = this.sfm_api_url + 'save_new_folder.php?';
+            let action_url = this.afm_api_url + 'save_new_folder.php?';
             this.folder.c_dir = this.query_string.c_dir;
             var formData = this.formData(this.folder);
             axios.post(action_url, formData, this.headers).then(res => {
@@ -292,7 +292,7 @@ var sfm_app = new Vue({
         deleteItem: function (item) {
             if (confirm("Do want to delete? ")) {
                 // delete items 
-                let action_url = this.sfm_api_url + 'delete.php?';
+                let action_url = this.afm_api_url + 'delete.php?';
                 item.c_dir = this.query_string.c_dir;
                 var formData = this.formData(item);
                 axios.post(action_url, formData, this.headers).then(res => {
@@ -367,7 +367,7 @@ var sfm_app = new Vue({
         updateFolder: function () {
             this.reset_message();
             // let qs = this.makeSerialize(this.query_string);
-            let action_url = this.sfm_api_url + 'update_folder.php?';
+            let action_url = this.afm_api_url + 'update_folder.php?';
             this.folder.c_dir = this.query_string.c_dir;
             var formData = this.formData(this.folder);
             axios.post(action_url, formData, this.headers).then(res => {

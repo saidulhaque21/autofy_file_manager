@@ -11,10 +11,10 @@
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="src/css/sfm_modal.css" >
+        <link rel="stylesheet" href="src/css/afm_modal.css" >
         <link rel="stylesheet" href="src/css/dropzone.min.css" >
         <meta name="theme-color" content="#563d7c">
-        <link rel="stylesheet" href="src/css/sfm.css"   >
+        <link rel="stylesheet" href="src/css/afm.css"   >
  
     </head>
     <body>
@@ -36,9 +36,9 @@
             var root_directory = "uploads"; 
             var upload_directory = "<?php echo date("Y/m/d"); ?>";
             var debug = true;
-            var base_url = "http://localhost/sfm/";
+            var base_url = "http://localhost/autofy_file_manager/";
         </script> 
-        <script src="src/js/sfm_fm.js"></script>
+        <script src="src/js/afm_fm.js"></script>
  
     </body>
 </html>

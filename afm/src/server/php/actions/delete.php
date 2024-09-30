@@ -15,9 +15,9 @@ if (!$name) {
 } else {
     try {
         if ($is_derectory) {
-             fm_rdelete(SFM_DIRECTORY_PATH );
+             fm_rdelete(afm_DIRECTORY_PATH );
         } else {
-            fm_rdelete(SFM_DIRECTORY_PATH . $name);
+            fm_rdelete(afm_DIRECTORY_PATH . $name);
         }
 
         $response["status"] = 200;

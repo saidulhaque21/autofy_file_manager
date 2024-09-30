@@ -5,14 +5,14 @@ HTML:
         <div class="col-md-11">  
             <img v-if="website_widget_item.image"  class="img-fluid p-1"  :src="base+website_widget_item.image" style="max-width: 250px;" />
             <input  type="hidden" name="image" v-model="website_widget_item.image" id="image"/>
-            <button type="button" class="btn btn-secondary btn-sm" @click="vueSFM">Add Category Featured Image</button> 
+            <button type="button" class="btn btn-secondary btn-sm" @click="vueafm">Add Category Featured Image</button> 
         </div>
     </div>
 </div> 
 
 VUE JS: 
 file_path:"", 
-vueSFM: function () {
+vueafm: function () {
         this.processMessage = "Opening Modal";
         var options = {
             base_url: base_url,

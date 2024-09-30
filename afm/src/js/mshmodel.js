@@ -1,10 +1,10 @@
 var mshmodel = '';
-var sfm_base_url = "http://localhost/";
-var sfm_base = "sfm/";
-var sfm_title = "My Modal Title";
+var afm_base_url = "http://localhost/";
+var afm_base = "autofy_file_manager/";
+var afm_title = "My Modal Title";
 var alreadyLoaded = false;
 var ajax_loader = "src/img/ajax_loader.gif";
-var sfm_callback;
+var afm_callback;
 var load_asynchronize_status = "start";
 var select_action = ""; 
 window.onload = function () {
@@ -13,7 +13,7 @@ window.onload = function () {
 //    var mshmodel_html = '<div class="mshmodel" id="mshmodel" style="display:none;"><div id="tag_header"></div>' +
 //            '<div class="mshmodel_content">' +
 //            '<div class="mshmodel_header"><span class="close">&times;</span><h2 id="mshmodel_title">Modal Header</h2></div>' +
-//            '<div class="mshmodel_body" id="sfm_uploader_container"></div> ' +
+//            '<div class="mshmodel_body" id="afm_uploader_container"></div> ' +
 //            '<div class="mshmodel_footer" id=mshmodel_footer>...</div>' +
 //            '</div>' +
 //            '</div>';
@@ -21,7 +21,7 @@ window.onload = function () {
       var mshmodel_html = '<div class="mshmodel" id="mshmodel" style="display:none;">' +
             '<div class="mshmodel_content">' +
            
-            '<div class="mshmodel_body" id="sfm_uploader_container"></div> ' +
+            '<div class="mshmodel_body" id="afm_uploader_container"></div> ' +
             ' ' +
             '</div>' +
             '</div>';
@@ -51,33 +51,33 @@ window.onload = function () {
 
 function smartFileManager(options, callback) {
 //    console.log(options);
-    var modal_title = options.title !== undefined ? options.title : sfm_title;
-    sfm_base_url = options.base_url !== undefined ? options.base_url : sfm_base_url;
+    var modal_title = options.title !== undefined ? options.title : afm_title;
+    afm_base_url = options.base_url !== undefined ? options.base_url : afm_base_url;
   //  select_action = options.select_action !== undefined ? options.select_action : select_action;
-    var remote_url = options.remote !== undefined ? options.remote : sfm_base_url + sfm_base + 'src/main.php';
+    var remote_url = options.remote !== undefined ? options.remote : afm_base_url + afm_base + 'src/main.php';
  
-    sfm_callback = options.afterFileSelect !== undefined ? options.afterFileSelect : callback;
+    afm_callback = options.afterFileSelect !== undefined ? options.afterFileSelect : callback;
     mshmodel.style.display = "block";
    // document.getElementById("mshmodel_title").innerHTML = modal_title;
     // Immediately-invoked function expression
     (function () {
         if (!alreadyLoaded) {
-            cssloader(sfm_base_url + sfm_base + "src/bootstrap/css/bootstrap.min.css");
-            cssloader(sfm_base_url + sfm_base + "src/css/sfm_modal.css");
-            cssloader(sfm_base_url + sfm_base + "src/css/sfm.css");
-            cssloader(sfm_base_url + sfm_base + "src/css/dropzone.min.css");
+            cssloader(afm_base_url + afm_base + "src/bootstrap/css/bootstrap.min.css");
+            cssloader(afm_base_url + afm_base + "src/css/afm_modal.css");
+            cssloader(afm_base_url + afm_base + "src/css/afm.css");
+            cssloader(afm_base_url + afm_base + "src/css/dropzone.min.css");
 
             //bootstrap
-            jsload(sfm_base_url + sfm_base + "src/vue/vue.min.js");
-            jsload(sfm_base_url + sfm_base + "src/bootstrap/js/popper.min.js");
-            jsload(sfm_base_url + sfm_base + "src/bootstrap/js/bootstrap.min.js");
+            jsload(afm_base_url + afm_base + "src/vue/vue.min.js");
+            jsload(afm_base_url + afm_base + "src/bootstrap/js/popper.min.js");
+            jsload(afm_base_url + afm_base + "src/bootstrap/js/bootstrap.min.js");
 //            alert(remote_url);
-            sfm_load(sfm_base_url + sfm_base + "src/vue/axios.min.js", function (xhr) {
+            afm_load(afm_base_url + afm_base + "src/vue/axios.min.js", function (xhr) {
                 jsAppendChild(xhr.responseText);
-                jsload(sfm_base_url + sfm_base + "src/vue/component/dropzone/vue2Dropzone.js");
-                sfm_load(remote_url, function (xhr) {
-                    document.getElementById("sfm_uploader_container").innerHTML = xhr.responseText;
-                    jsload(sfm_base_url + sfm_base + "src/js/sfm_fm.js?v=111");
+                jsload(afm_base_url + afm_base + "src/vue/component/dropzone/vue2Dropzone.js");
+                afm_load(remote_url, function (xhr) {
+                    document.getElementById("afm_uploader_container").innerHTML = xhr.responseText;
+                    jsload(afm_base_url + afm_base + "src/js/afm_fm.js?v=111");
                 });
 
             });
@@ -86,22 +86,22 @@ function smartFileManager(options, callback) {
 
         }
         if (alreadyLoaded) {
-            // jsload("src/js/sfm_fm.js");
+            // jsload("src/js/afm_fm.js");
         }
     })();
 }
 
 function mshAfterFileSelect(paramas) {
-    sfm_callback(paramas);
+    afm_callback(paramas);
     mshmodel.style.display = "none";
 }
 
-function sfmClose() {
+function afmClose() {
     mshmodel.style.display = "none";
 }
 
 function jsload(src) {
-    sfm_load(src, function (xhr) {
+    afm_load(src, function (xhr) {
         jsAppendChild(xhr.responseText);
 
     });
@@ -131,7 +131,7 @@ function cssloader(href) {
 }// Get the button that opens the mshmodel
 
 
-function sfm_load(url, callback) {
+function afm_load(url, callback) {
     var xhr;
 
     if (typeof XMLHttpRequest !== 'undefined')
@@ -192,21 +192,21 @@ function GetXmlHttpObject() { // This function we will use to call our xmlhttpob
 } // Close Function
 
  
-function sfm_load_post(url, data) {
-    sfm_load(url, "POST", "", data);
+function afm_load_post(url, data) {
+    afm_load(url, "POST", "", data);
 }
 
-function sfm_load_get(url, sfm_uploader_container) {
-    sfm_load(url, "GET", sfm_uploader_container);
+function afm_load_get(url, afm_uploader_container) {
+    afm_load(url, "GET", afm_uploader_container);
 }
-function X_sfm_load(url, rtype, sfm_uploader_container, data) {
+function X_afm_load(url, rtype, afm_uploader_container, data) {
     var is_script = false;
     if (rtype === 'script') {
         is_script = true;
         rtype = "GET";
     }
     var request_type = rtype !== undefined ? rtype : "GET";
-    var ajax_container = sfm_uploader_container !== undefined ? sfm_uploader_container : "sfm_uploader_container";
+    var ajax_container = afm_uploader_container !== undefined ? afm_uploader_container : "afm_uploader_container";
     xmlHttp = GetXmlHttpObject() // Creates a new Xmlhttp object.
     if (xmlHttp === null) { // If it cannot create a new Xmlhttp object.
         alert("Browser does not support HTTP Request") // Alert Them!

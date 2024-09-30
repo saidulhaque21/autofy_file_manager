@@ -1,27 +1,27 @@
-.sfm_container{
+.afm_container{
     background: #000000; 
     
 }
-.sfm_item_contaimer{max-height:65vh;}
+.afm_item_contaimer{max-height:65vh;}
 
-.sfm_header{
+.afm_header{
     background: #28bebd; 
  
 }
-.sfm_header h2{
+.afm_header h2{
     font-size: 20px;
     color: #fff!important;
 }
-.sfm_footer{
+.afm_footer{
     background: #212529; 
      color: #fff!important;
 }
-.sfm_breadcrumb{
+.afm_breadcrumb{
     background:     #ffffff; 
 }
-.sfm_breadcrumb a{  color:#28bebd; }
+.afm_breadcrumb a{  color:#28bebd; }
 
-.sfm_app_body{
+.afm_app_body{
     background: #eef5f9;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .grid_view p{margin: 0px; padding: 0 0 0px 0px;} 
-.grid_view p.sfm_file_name{font-weight:bold; }
+.grid_view p.afm_file_name{font-weight:bold; }
 
 
  .make-me-sticky {

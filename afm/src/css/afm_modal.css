@@ -67,7 +67,7 @@
     /*padding: 2px 16px;*/
     min-height: 200px;
 }
-#sfm_uploader_container{
+#afm_uploader_container{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */   
