@@ -8,7 +8,7 @@ var afm_callback;
 var load_asynchronize_status = "start";
 var select_action = "";
 var is_development_mode = true;
-var version = "1.0.1";
+var version = "1.0.1"; 
 window.onload = function () {
     var newDiv = document.createElement("div"); //new Div
     var parser = new DOMParser();
@@ -34,20 +34,20 @@ window.onload = function () {
     document.body.appendChild(newDiv);
 
     alreadyLoaded = false;
-//// Get the <span> element that closes the mshmodel
-//    var closer = document.getElementsByClassName("close")[0];
-//
-//// When the user clicks on <span> (x), close the mshmodel
-//    closer.onclick = function () {
-//        mshmodel.style.display = "none";
-//    };
-//
-//// When the user clicks anywhere outside of the mshmodel, close it
-//    window.onclick = function (event) {
-//        if (event.target === mshmodel) {
-//            mshmodel.style.display = "none";
-//        }
-//    };
+// Get the <span> element that closes the mshmodel
+    var closer = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the mshmodel
+    closer.onclick = function () {
+        mshmodel.style.display = "none";
+    };
+
+// When the user clicks anywhere outside of the mshmodel, close it
+    window.onclick = function (event) {
+        if (event.target === mshmodel) {
+            mshmodel.style.display = "none";
+        }
+    };
 };
 
 function smartFileManager(options, callback) {
@@ -62,29 +62,29 @@ function smartFileManager(options, callback) {
     // document.getElementById("mshmodel_title").innerHTML = modal_title;
     // Immediately-invoked function expression
     (function () {
-
-        if (is_development_mode) {
-            version = Math.random().toString(36).substr(2, length);
-        }
-
-
+       
+         if (is_development_mode) {
+             version = Math.random().toString(36).substr(2, length); 
+         }
+        
+        
         if (!alreadyLoaded) {
-            cssloader(afm_base_url + afm_base + "src/bootstrap/css/bootstrap.min.css?v=" + version);
-            cssloader(afm_base_url + afm_base + "src/css/afm_modal.css?v=" + version);
-            cssloader(afm_base_url + afm_base + "src/css/afm.css?v=" + version);
-            cssloader(afm_base_url + afm_base + "src/css/dropzone.min.css?v=" + version);
+            cssloader(afm_base_url + afm_base + "src/bootstrap/css/bootstrap.min.css?v="+version);
+            cssloader(afm_base_url + afm_base + "src/css/afm_modal.css?v="+version);
+            cssloader(afm_base_url + afm_base + "src/css/afm.css?v="+version);
+            cssloader(afm_base_url + afm_base + "src/css/dropzone.min.css?v="+version);
 
             //bootstrap
-            jsload(afm_base_url + afm_base + "src/vue/vue.min.js?v=" + version);
-            jsload(afm_base_url + afm_base + "src/bootstrap/js/popper.min.js?v=" + version);
-            jsload(afm_base_url + afm_base + "src/bootstrap/js/bootstrap.min.js?v=" + version);
+            jsload(afm_base_url + afm_base + "src/vue/vue.min.js?v="+version);
+            jsload(afm_base_url + afm_base + "src/bootstrap/js/popper.min.js?v="+version);
+            jsload(afm_base_url + afm_base + "src/bootstrap/js/bootstrap.min.js?v="+version);
 //            alert(remote_url);
             afm_load(afm_base_url + afm_base + "src/vue/axios.min.js", function (xhr) {
                 jsAppendChild(xhr.responseText);
                 jsload(afm_base_url + afm_base + "src/vue/component/dropzone/vue2Dropzone.js");
                 afm_load(remote_url, function (xhr) {
                     document.getElementById("afm_uploader_container").innerHTML = xhr.responseText;
-                    jsload(afm_base_url + afm_base + "src/js/afm_fm.js?v=" + version);
+                    jsload(afm_base_url + afm_base + "src/js/afm_fm.js?v="+version);
                 });
 
             });
@@ -118,28 +118,10 @@ function jsAppendChild(responseText) {
     var se = document.createElement('script');
     se.type = "text/javascript";
     se.text = responseText;
-    var headElement = document.getElementsByTagName('head')[0];
-    
-    console.log(headElement); 
-    if (headElement) {
-        headElement.appendChild(se);
-    }
-
+    document.getElementsByTagName('head')[0].appendChild(se);
 
 }
-//document.addEventListener('DOMContentLoaded', function () {
-//    function jsAppendChild(responseText) {
-//        var se = document.createElement('script');
-//        se.type = "text/javascript";
-//        se.text = responseText;
-//        var headElement = document.getElementsByTagName('head')[0];
-//        if (headElement) {
-//            headElement.appendChild(se);
-//        } else {
-//            console.error("Head element not found");
-//        }
-//    }
-//});
+
 
 
 function jsloader(src) {
@@ -224,4 +206,39 @@ function afm_load_post(url, data) {
 
 function afm_load_get(url, afm_uploader_container) {
     afm_load(url, "GET", afm_uploader_container);
-} 
+}
+function X_afm_load(url, rtype, afm_uploader_container, data) {
+    var is_script = false;
+    if (rtype === 'script') {
+        is_script = true;
+        rtype = "GET";
+    }
+    var request_type = rtype !== undefined ? rtype : "GET";
+    var ajax_container = afm_uploader_container !== undefined ? afm_uploader_container : "afm_uploader_container";
+    xmlHttp = GetXmlHttpObject() // Creates a new Xmlhttp object.
+    if (xmlHttp === null) { // If it cannot create a new Xmlhttp object.
+        alert("Browser does not support HTTP Request") // Alert Them!
+        return // Returns.
+    } // End If.
+
+    xmlHttp.open(request_type, url, true) // Opens the URL using GET
+    if (data !== undefined) {
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.send(data);
+    } else {
+        xmlHttp.onreadystatechange = function () { // This is the most important piece of the puzzle, if onreadystatechange is equal to 4 than that means the request is done.
+            document.getElementById(ajax_container).innerHTML = loadstatustext //Display "fetching page message"
+            if (xmlHttp.readyState === 4) { // If the onreadystatechange is equal to 4 lets show the response text.
+                document.getElementById(ajax_container).innerHTML = xmlHttp.responseText; // Updates the div with the response text from check.php
+            } // End If.
+        }; // Close Function
+
+        xmlHttp.send(null); // Sends NULL instead of sending data.
+    }
+    if (is_script === true) {
+        var se = document.createElement('script');
+        se.type = "text/javascript";
+        se.text = xmlHttp.responseText;
+        document.getElementsByTagName('head')[0].appendChild(se);
+    }
+}

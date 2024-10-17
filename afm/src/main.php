@@ -8,16 +8,21 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
                 <button type="button" @click="openUpload"  class="btn btn-md btn-warning text-bold">Upload +</button>
-            </div>
+            </div> 
             <div class="  mr-2 pt-1">
                 <button type="button" @click="openNewItem"  class="btn btn-sm btn-success ">New Folder +</button>
-                <button class="btn btn-sm btn-info dropdown-toggle   " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{view_type}} 
+                
+            </div>
+            <div class="  mr-2 pt-1">
+                 <button class="btn btn-sm btn-info dropdown-toggle   " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{view_type}} 
                     <div class="dropdown-menu">
                         <a @click="changeView('Grid')"  class="dropdown-item" href="#">Grid</a> 
                         <a @click="changeView('List')"   class="dropdown-item" href="#">List</a> 
                     </div>
                 </button>
             </div>
+             
+            
             <!--            <div class="btn-group mr-2">
                             <button class="btn  btn-sm btn-warning dropdown-toggle  py-0 px-1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type 
                                 <div class="dropdown-menu">
@@ -266,14 +271,14 @@
 </select>-->
                             </div>
                             <div class="card-text col">
-                                 <div class="input-group mb-3">
+                                <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon3"> <strong>  Image resize(Max width):</strong>   </span>
                                     </div>
-                                     <input type="text" class="form-control" value="1200" />
+                                    <input type="text" class="form-control" value="1200" />
                                 </div>
-                                
-                              
+
+
                             </div>
 
                         </div>

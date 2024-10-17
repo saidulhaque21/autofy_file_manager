@@ -215,13 +215,12 @@ var afm_app = new Vue({
                 this.current_folder = item;
                 this.fetchObjects();
             } else if (item.type === 'file') {
-               // console.log(this.select_action);
-               // if(this.select_action==="direct"){  
-                     if(this.select_action===""){  
-                 this.selectItem(item);
-                }
-                else {
-                this.previewItem(item);
+                // console.log(this.select_action);
+                // if(this.select_action==="direct"){  
+                if (this.select_action === "") {
+                    this.selectItem(item);
+                } else {
+                    this.previewItem(item);
                 }
             }
         },
@@ -256,6 +255,7 @@ var afm_app = new Vue({
         openUpload: function () {
             this.current_action = "upload";
             this.is_preview = false;
+            this.is_new_folder = false;
             this.reset_message();
         },
         saveFolder: function () {
@@ -361,7 +361,7 @@ var afm_app = new Vue({
             this.reset_message();
             this.folder.folder_name = this.current_folder.name;
             this.folder.previous_name = this.current_folder.name;
-            
+
             // this.errorMessage = "renameDirectory: Not Implemented Yet.... ";
         },
         updateFolder: function () {

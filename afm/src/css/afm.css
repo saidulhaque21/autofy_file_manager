@@ -1,25 +1,32 @@
 .afm_container{
-    background: #000000; 
-    
+    background: #000000;
+
 }
-.afm_item_contaimer{max-height:65vh;}
+.afm_item_contaimer{
+    max-height:70vh;
+}
 
 .afm_header{
-    background: #28bebd; 
- 
+    background: #28bebd;
+
 }
 .afm_header h2{
     font-size: 20px;
     color: #fff!important;
 }
 .afm_footer{
-    background: #212529; 
-     color: #fff!important;
+    background: #226b88;
+    color: #fff!important;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
 }
 .afm_breadcrumb{
-    background:     #ffffff; 
+    background:     #ffffff;
 }
-.afm_breadcrumb a{  color:#28bebd; }
+.afm_breadcrumb a{
+    color:#28bebd;
+}
 
 .afm_app_body{
     background: #eef5f9;
@@ -47,7 +54,7 @@
 .card.image-over-card .card-image {
     min-height:100px;
     text-align: center;
-    background: #f5f5f5; 
+    background: #f5f5f5;
     position: relative;
     overflow: hidden;
     margin-left: 7px;
@@ -61,21 +68,31 @@
     max-width: 100%;
     max-height: 100%;
     border-radius: 6px;
-    pointer-events: none; 
+    pointer-events: none;
 
 }
 
-.grid_view p{margin: 0px; padding: 0 0 0px 0px;} 
-.grid_view p.afm_file_name{font-weight:bold; }
+.grid_view p{
+    margin: 0px;
+    padding: 0 0 0px 0px;
+}
+.grid_view p.afm_file_name{
+    font-weight:bold;
+}
 
 
- .make-me-sticky {
+.make-me-sticky {
     /*position: -webkit-sticky;*/
     /*position: fixed;*/
-/*    top: 100px;*/
+    /*    top: 100px;*/
 
     padding: 0 15px;
 }
-.cancel_action{cursor: pointer;}
+.cancel_action{
+    cursor: pointer;
+}
 
-.quick_action .card-link{background: rgb(149, 63, 152); padding: 5px;}
+.quick_action .card-link{
+    background: rgb(149, 63, 152);
+    padding: 5px;
+}
