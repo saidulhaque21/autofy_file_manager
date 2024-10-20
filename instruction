@@ -2,8 +2,7 @@ CakePHP:
 
 change root .htaccess as follows 
 
-# Uncomment the following to prevent the httpoxy vulnerability
-# See: https://httpoxy.org/
+
 #<IfModule mod_headers.c>
 #    RequestHeader unset Proxy
 #</IfModule>
