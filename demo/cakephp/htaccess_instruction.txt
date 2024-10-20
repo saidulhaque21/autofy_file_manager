@@ -1,0 +1,24 @@
+CakePHP:
+
+change root .htaccess as follows 
+
+
+#<IfModule mod_headers.c>
+#    RequestHeader unset Proxy
+#</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # Allow access to the autofy_file_manager folder directly
+    RewriteCond %{REQUEST_URI} ^/autofy_file_manager/ [NC]
+    RewriteRule ^ - [L]
+
+    RewriteRule    ^(\.well-known/.*)$ $1 [L]
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
+
+
+
+
