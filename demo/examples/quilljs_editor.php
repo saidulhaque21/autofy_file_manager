@@ -4,7 +4,7 @@
 <!-- Create the editor container -->
 
     <script>
-        var base_url = "http://localhost/afm/";
+        var base_url = "http://localhost/autofy_file_manager/";
         var root_directory = "uploads/";
     </script>
 <div id="toolbar"> 
@@ -56,7 +56,7 @@
 
     function customImageHandler() {
         var options = {
-            base_url: "http://localhost/afm/",
+            base_url: "http://localhost/autofy_file_manager/",
             title: "File Manager ",
             file_type: "image", // image | document (doc, pdf) | video | *
             afterFileSelect: afterFileSelect

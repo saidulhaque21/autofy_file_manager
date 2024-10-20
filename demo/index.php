@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="css/demo.css"   >
         <script src="../afm/src/vue/vue.min.js"></script>
-        <script src="../afm/src/js/mshmodel.js"></script>
+        <script src="../afm/src/js/mshmodel.js?v=202411"></script>
 
         <?php
         

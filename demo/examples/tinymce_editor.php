@@ -1,5 +1,5 @@
 <script>
-    var base_url = "http://localhost/afm/";
+    var base_url = "http://localhost/autofy_file_manager/";
     var root_directory = "uploads/";
 </script>
 <script src="js/tinymce.min.js"></script>
@@ -10,8 +10,15 @@
 
 <script>
 
-    var base_url = "http://localhost/afm/";
+    var base_url = "http://localhost/autofy_file_manager/";
     var images_upload_base_path = base_url + "uploads/";
+
+    const t = {
+        updateValue: function (content) {
+           // console.log('Updated content:', content);  // Handle content updates
+        },
+        objTinymce: null  // This will store the TinyMCE instance
+    };
     var e = tinymce.init({
         selector: '.tinymce_editor',
         height: 500,
@@ -111,7 +118,7 @@
                 t.updateValue(e.getContent())
             }
             ),
-                    t.objTinymce = e
+                    t.objTinymce = e;
         }
 
 
@@ -119,7 +126,7 @@
     });
     function customImageHandler(editor) {
         var options = {
-            base_url: "http://localhost/afm/",
+            base_url: "http://localhost/autofy_file_manager/",
             title: "File Manager ",
             file_type: "image", // image | document (doc, pdf) | video | *
             afterFileSelect: function (params) {
@@ -130,6 +137,7 @@
         smartFileManager(options);
     }
     function afterSmartFileSelect(params, editor) {
+       // console.log(params);
         if (params.icon === "fa-picture-o") {
             editor.insertContent("<img src='" + params.file_path + "'/>");
         } else {

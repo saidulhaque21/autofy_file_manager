@@ -7,7 +7,7 @@ var afm_model_vue = new Vue({
        vueafm: function () {
             this.processMessage = "Opening Modal";
             var options = {
-                base_url:"http://localhost/afm/",
+                base_url:"http://localhost/autofy_file_manager/",
                 title: "File Manager ",
                 file_type: "image", // image | document (doc, pdf) | video | *
                 afterFileSelect:this.afterFileSelect

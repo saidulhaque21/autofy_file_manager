@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="afm/src/vue/vue.min.js"></script>
-        <script src="afm/src/js/mshmodel.js?v=20241"></script>
+        <script src="afm/src/js/mshmodel.js?v=20102024111"></script>
  
     </head>
     <body>

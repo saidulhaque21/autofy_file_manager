@@ -1,5 +1,5 @@
-var mshmodel = '';
-var afm_base_url = "http://localhost/";
+var mshmodel = 'http://localhost/autofy_file_manager/';
+var afm_base_url = "";
 var afm_base = "afm/";
 var afm_title = "My Modal Title";
 var alreadyLoaded = false;
@@ -64,10 +64,18 @@ function smartFileManager(options, callback) {
     (function () {
 
         if (is_development_mode) {
-            version = Math.random().toString(36).substr(2, length);
+            const scripts = document.getElementsByTagName('script');
+            for (let i = 0; i < scripts.length; i++) {
+                const src = scripts[i].getAttribute('src');
+                if (src && src.includes('mshmodel.js')) {
+                    const urlParams = new URLSearchParams(src.split('?')[1]);
+                    version = urlParams.get('v');
+                    break;
+                }
+            }
         }
 
-
+//        alert(version);
         if (!alreadyLoaded) {
             cssloader(afm_base_url + afm_base + "src/bootstrap/css/bootstrap.min.css?v=" + version);
             cssloader(afm_base_url + afm_base + "src/css/afm_modal.css?v=" + version);
@@ -119,8 +127,8 @@ function jsAppendChild(responseText) {
     se.type = "text/javascript";
     se.text = responseText;
     var headElement = document.getElementsByTagName('head')[0];
-    
-    console.log(headElement); 
+
+    console.log(headElement);
     if (headElement) {
         headElement.appendChild(se);
     }
